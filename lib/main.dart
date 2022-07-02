@@ -40,18 +40,12 @@ class _HomePageState extends State<HomePage> {
           title: Text('ListView VS GridView'),
           centerTitle: true,
           actions: [
-            PopupMenuButton<MenuItem>(
-                onSelected: (value) {
-                  if (value == MenuItem.item1) {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const ItemPage(),
-                    ));
-                  } else if
+            IconButton(onPressed: () {}, icon: Icon(Icons.grid_view)),
+            IconButton(
+                onPressed: () {
+                  ListView();
                 },
-                itemBuilder: (context) => [
-                      PopupMenuItem(child: Text('List View')),
-                      PopupMenuItem(child: Text('Grid View'))
-                    ])
+                icon: Icon(Icons.list))
           ],
         ),
         body: buildList(),
@@ -123,3 +117,5 @@ class _HomePageState extends State<HomePage> {
       ..showSnackBar(snackBar);
   }
 }
+
+enum ViewType { grid, list }
